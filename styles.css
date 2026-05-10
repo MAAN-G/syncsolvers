@@ -746,7 +746,7 @@ h1, h2, h3, h4 {
   .nav-links.open { transform: translateY(0); opacity: 1; pointer-events: auto; }
   .nav-links a { padding: 0.7rem 0.9rem; border-radius: 8px; }
   .nav-links a:hover { background: var(--card-hover); }
-  .nav-cta { text-align: center; margin-top: 0.4rem; }
+  .nav-cta { display: none; }
 
   .hero { min-height: auto; padding: 7rem 0 4rem; }
   .hero-inner { text-align: center; margin: 0 auto; }
