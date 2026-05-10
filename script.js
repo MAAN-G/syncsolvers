@@ -67,6 +67,38 @@
     revealEls.forEach((el) => el.classList.add('visible'));
   }
 
+  // ---------- Portfolio filter tabs ----------
+  const filterTabs = document.querySelectorAll('.filter-tab');
+  const projectGrid = document.getElementById('projectGrid');
+  const emptyState = document.getElementById('emptyState');
+
+  if (filterTabs.length && projectGrid) {
+    const cards = projectGrid.querySelectorAll('.project-card');
+
+    filterTabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        const filter = tab.dataset.filter;
+
+        // Toggle active tab state
+        filterTabs.forEach((t) => {
+          t.classList.toggle('active', t === tab);
+          t.setAttribute('aria-selected', t === tab ? 'true' : 'false');
+        });
+
+        // Filter cards
+        let visibleCount = 0;
+        cards.forEach((card) => {
+          const matches = filter === 'all' || card.dataset.category === filter;
+          card.classList.toggle('hide', !matches);
+          if (matches) visibleCount++;
+        });
+
+        // Toggle empty state
+        if (emptyState) emptyState.hidden = visibleCount > 0;
+      });
+    });
+  }
+
   // ---------- Contact form (client-side UX only) ----------
   if (form) {
     // Prevent Enter key from submitting the form on input fields.
