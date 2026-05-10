@@ -99,7 +99,7 @@
       }
 
       // Compose email and open the user's default mail client
-      const recipient = 'syncsolver@gmail.com';
+      const recipient = 'syncsolvers@gmail.com';
       const mailSubject = subject || `New inquiry from ${name}`;
       const mailBody =
         `Name: ${name}\n` +
@@ -123,7 +123,7 @@
       setTimeout(() => {
         btn.disabled = false;
         btn.textContent = originalText;
-        formStatus.textContent = 'Your email client should now be open. If not, email us at syncsolver@gmail.com.';
+        formStatus.textContent = 'Your email client should now be open. If not, email us at syncsolvers@gmail.com.';
         formStatus.classList.add('success');
       }, 600);
     });

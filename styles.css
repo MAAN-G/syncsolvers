@@ -657,7 +657,7 @@ h1, h2, h3, h4 {
 }
 .footer-grid {
   display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  grid-template-columns: 1.8fr 1fr 1fr;
   gap: 2.5rem;
   padding-bottom: 3rem;
 }
@@ -679,7 +679,7 @@ h1, h2, h3, h4 {
 }
 .footer-bottom .container {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   flex-wrap: wrap;
   gap: 1rem;
@@ -717,6 +717,7 @@ h1, h2, h3, h4 {
 /* ---------- Responsive ---------- */
 @media (max-width: 960px) {
   .section { padding: 5rem 0; }
+  .hero { min-height: auto; padding: 7rem 0 4rem; }
   .about-grid,
   .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
   .about-visual { height: 380px; }
