@@ -19,10 +19,30 @@
   // ---------- Set current year in footer ----------
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+  // ---------- Page loader (hides initial flicker / FOUC) ----------
+  const pageLoader = document.getElementById('pageLoader');
+  const revealPage = () => {
+    document.body.classList.add('is-ready');
+    if (pageLoader) {
+      pageLoader.classList.add('hidden');
+      setTimeout(() => pageLoader.remove(), 500);
+    }
+  };
+  if (document.readyState === 'complete') {
+    setTimeout(revealPage, 250);
+  } else {
+    window.addEventListener('load', () => setTimeout(revealPage, 250));
+  }
+  // Hard fallback so the page can't get stuck behind the loader
+  setTimeout(revealPage, 2500);
+
   // ---------- Navbar scroll state + back-to-top ----------
+  // Subpages (those with a .page-hero) keep the navbar in its "scrolled"
+  // styled state at all times to avoid a flicker on page load.
+  const isSubpage = !!document.querySelector('.page-hero');
   const onScroll = () => {
     const y = window.scrollY;
-    if (navbar) navbar.classList.toggle('scrolled', y > 20);
+    if (navbar) navbar.classList.toggle('scrolled', isSubpage || y > 20);
     if (toTop) toTop.classList.toggle('visible', y > 500);
   };
   window.addEventListener('scroll', onScroll, { passive: true });
